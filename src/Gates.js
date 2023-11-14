@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, StatusBar } from 'react-native';
+import { GiWindHole } from "react-icons/gi";
 
-const YourComponent = () => {
+
+const gates = () => {
   const [data, setData] = useState([]);
-  const apiKey = '94962B9A-966C-43FC-8E1A-145DEAA5970C';
+  const LocalEnv = require('../.env.local.json')
+  const apiKey = LocalEnv.STARSEEKER_API_KEY;
   useEffect(() => {
     const apiUrl = 'https://hstc-api.testing.keyholding.com/gates';
-
+    console.log('apiKey',apiKey)
     fetch(apiUrl, {
       method: 'GET',
       headers: {
@@ -16,7 +19,7 @@ const YourComponent = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Failed to fetch results');
         }
         return response.json();
       })
@@ -27,18 +30,16 @@ const YourComponent = () => {
         console.error('Error:', error);
       });
   }, [apiKey]);
-
+console.log({data})
   return (
-    <View>
-      <Text >Gate Results:</Text>
+    <View style={styles.container}>
       <FlatList
         data={data}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <View>
+          <View style={styles.item}>
             <Text>Gate Name: {item.name}</Text>
             <Text>Gate Code: {item.code}</Text>
-            {/* Add more properties here as needed */}
           </View>
         )}
       />
@@ -46,4 +47,21 @@ const YourComponent = () => {
   );
 };
 
-export default YourComponent;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '90%',
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    padding: 10, 
+    backgroundColor: 'orange', 
+    margin: 10, 
+    borderRadius: 10,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  }
+});
+
+export default gates;
+

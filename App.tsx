@@ -6,7 +6,7 @@ import Gates from './src/Gates';
 
 function HomeScreen() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 20}}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Gates />
     </View>
   );
