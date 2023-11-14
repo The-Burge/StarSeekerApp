@@ -9,7 +9,6 @@ const gates = () => {
   const apiKey = LocalEnv.STARSEEKER_API_KEY;
   useEffect(() => {
     const apiUrl = 'https://hstc-api.testing.keyholding.com/gates';
-    console.log('apiKey',apiKey)
     fetch(apiUrl, {
       method: 'GET',
       headers: {
@@ -29,12 +28,12 @@ const gates = () => {
       .catch((error) => {
         console.error('Error:', error);
       });
-  }, [apiKey]);
-console.log({data})
+            }, [apiKey]);
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={data}
+        data={data.sort((a, b) => a.name.localeCompare(b.name))}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.item}>
