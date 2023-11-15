@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, StatusBar } from 'react-native';
-import { GiWindHole } from "react-icons/gi";
-
 
 const gates = () => {
   const [data, setData] = useState([]);
@@ -37,8 +35,8 @@ const gates = () => {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.item}>
-            <Text>Gate Name: {item.name}</Text>
-            <Text>Gate Code: {item.code}</Text>
+            <Text style={styles.itemText}>Gate Name: {item.name}</Text>
+            <Text style={styles.itemText}>Gate Code: {item.code}</Text>
           </View>
         )}
       />
@@ -54,12 +52,16 @@ const styles = StyleSheet.create({
   },
   item: {
     padding: 10, 
-    backgroundColor: 'orange', 
+    backgroundColor: '#3b5998', 
+    color: '#fff',
     margin: 10, 
     borderRadius: 10,
     marginVertical: 8,
     marginHorizontal: 16,
-  }
+  },
+  itemText: {
+    color: 'white',
+  },
 });
 
 export default gates;
