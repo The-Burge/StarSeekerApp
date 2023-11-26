@@ -3,7 +3,7 @@ import { View, Text, FlatList, Image, StyleSheet, StatusBar } from 'react-native
 
 const gates = () => {
   const [data, setData] = useState([]);
-  const LocalEnv = require('../.env.local.json')
+  const LocalEnv = require('../../.env.local.json')
   const apiKey = LocalEnv.STARSEEKER_API_KEY;
   useEffect(() => {
     const apiUrl = 'https://hstc-api.testing.keyholding.com/gates';
