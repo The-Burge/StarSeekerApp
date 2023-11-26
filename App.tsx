@@ -4,7 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import Gates from './src/assets/Gates';
 import { createDrawerNavigator } from '@react-navigation/drawer';  
 import Journey from './src/pages/journey';
-import Home from './src/pages/home';
 
 const Drawer = createDrawerNavigator(); 
 
