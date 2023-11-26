@@ -5,7 +5,7 @@ const JourneyCost = () => {
   const [distance, setDistance] = useState('');
   const [passengers, setPassengers] = useState('');
   const [parkingDays, setParkingDays] = useState('');
-  const [apiResponse, setApiResponse] = useState(null);
+  const [JourneyResponse, setJourneyResponse] = useState(null);
 
   const handleApiRequest = async () => {
     try {
@@ -21,7 +21,7 @@ const JourneyCost = () => {
       });
 
       const data = await response.json();
-      setApiResponse(data);
+      setJourneyResponse(data);
       setDistance('');
       setPassengers('');
       setParkingDays('')
@@ -67,10 +67,10 @@ const JourneyCost = () => {
       title="Submit" 
       onPress={handleApiRequest} />
 
-      {apiResponse && (
-        <View style={styles.apiResponseContainer}>
+      {JourneyResponse && (
+        <View style={styles.JourneyResponseContainer}>
           <Text>API Response:</Text>
-          <Text>{JSON.stringify(apiResponse)}</Text>
+          <Text>{JourneyResponse.journeyCost}</Text>
         </View>
       )}
     </View>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     width: 200,
   },
-  apiResponseContainer: {
+  JourneyResponseContainer: {
     marginTop: 20,
     padding: 10,
     borderWidth: 1,
