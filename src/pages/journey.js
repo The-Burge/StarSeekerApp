@@ -15,13 +15,17 @@ const JourneyCost = () => {
       const response = await fetch(journeyUrl, {
         method: 'GET',
         headers: {
-          'x-api-key': apiKey,
-          'Content-Type': 'application/json',
-        },
+            'x-api-key': apiKey,
+            'Content-Type': 'application/json',
+          },
       });
 
       const data = await response.json();
       setApiResponse(data);
+      setDistance('');
+      setPassengers('');
+      setParkingDays('')
+
     } catch (error) {
       console.error('Error making API request:', error);
     }
@@ -35,6 +39,7 @@ const JourneyCost = () => {
       <TextInput
         style={styles.input}
         keyboardType="numeric"
+        placeholder='Enter the distance'
         value={distance}
         onChangeText={(text) => setDistance(text)}
       />
@@ -43,6 +48,7 @@ const JourneyCost = () => {
       <TextInput
         style={styles.input}
         keyboardType="numeric"
+        placeholder='Enter Num passengers'
         value={passengers}
         onChangeText={(text) => setPassengers(text)}
       />
@@ -51,11 +57,15 @@ const JourneyCost = () => {
       <TextInput
         style={styles.input}
         keyboardType="numeric"
+        placeholder='Days parking'
         value={parkingDays}
         onChangeText={(text) => setParkingDays(text)}
       />
 
-      <Button title="Submit" onPress={handleApiRequest} />
+      <Button 
+      color='#3b5998'
+      title="Submit" 
+      onPress={handleApiRequest} />
 
       {apiResponse && (
         <View style={styles.apiResponseContainer}>
