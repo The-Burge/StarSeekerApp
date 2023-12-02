@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {View, TextInput, Text, Button, StyleSheet} from 'react-native';
 
 const JourneyCost = () => {
   const [distance, setDistance] = useState('');
@@ -8,24 +8,23 @@ const JourneyCost = () => {
   const [JourneyResponse, setJourneyResponse] = useState(null);
 
   const handleApiRequest = async () => {
-    try {w
-      const LocalEnv = require('../../.env.local.json')
+    try {
+      const LocalEnv = require('../../.env.local.json');
       const apiKey = LocalEnv.STARSEEKER_API_KEY;
       const journeyUrl = `https://hstc-api.testing.keyholding.com/transport/${distance}?passengers=${passengers}&parking=${parkingDays}`;
       const response = await fetch(journeyUrl, {
         method: 'GET',
         headers: {
-            'x-api-key': apiKey,
-            'Content-Type': 'application/json',
-          },
+          'x-api-key': apiKey,
+          'Content-Type': 'application/json',
+        },
       });
 
       const data = await response.json();
       setJourneyResponse(data);
       setDistance('');
       setPassengers('');
-      setParkingDays('')
-
+      setParkingDays('');
     } catch (error) {
       console.error('Error making API request:', error);
     }
@@ -39,33 +38,30 @@ const JourneyCost = () => {
       <TextInput
         style={styles.input}
         keyboardType="numeric"
-        placeholder='Enter the distance'
+        placeholder="Enter the distance"
         value={distance}
-        onChangeText={(text) => setDistance(text)}
+        onChangeText={text => setDistance(text)}
       />
 
       <Text>Number of Passengers:</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
-        placeholder='Enter Num passengers'
+        placeholder="Enter Num passengers"
         value={passengers}
-        onChangeText={(text) => setPassengers(text)}
+        onChangeText={text => setPassengers(text)}
       />
 
       <Text>Number of Days of Parking:</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
-        placeholder='Days parking'
+        placeholder="Days parking"
         value={parkingDays}
-        onChangeText={(text) => setParkingDays(text)}
+        onChangeText={text => setParkingDays(text)}
       />
 
-      <Button 
-      color='#3b5998'
-      title="Submit" 
-      onPress={handleApiRequest} />
+      <Button color="#3b5998" title="Submit" onPress={handleApiRequest} />
 
       {JourneyResponse && (
         <View style={styles.JourneyResponseContainer}>
