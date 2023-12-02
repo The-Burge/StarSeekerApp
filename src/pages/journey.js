@@ -65,8 +65,12 @@ const JourneyCost = () => {
 
       {JourneyResponse && (
         <View style={styles.JourneyResponseContainer}>
-          <Text>API Response:</Text>
-          <Text>{JourneyResponse.journeyCost}</Text>
+          <Text>Recommended Transport</Text>
+          <Text>Name: {JourneyResponse.recommendedTransport.name}</Text>
+          <Text>Capacity: {JourneyResponse.recommendedTransport.capacity}</Text>
+          <Text>
+            Rate per AU : {JourneyResponse.recommendedTransport.ratePerA}
+          </Text>
         </View>
       )}
     </View>
