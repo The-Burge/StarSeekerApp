@@ -8,7 +8,7 @@ const JourneyCost = () => {
   const [JourneyResponse, setJourneyResponse] = useState(null);
 
   const handleApiRequest = async () => {
-    try {
+    try {w
       const LocalEnv = require('../../.env.local.json')
       const apiKey = LocalEnv.STARSEEKER_API_KEY;
       const journeyUrl = `https://hstc-api.testing.keyholding.com/transport/${distance}?passengers=${passengers}&parking=${parkingDays}`;
