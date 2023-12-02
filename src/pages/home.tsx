@@ -6,11 +6,11 @@ function HomeScreen() {
   const navigation = useNavigation();
 
   const navigateToGates = () => {
-    navigation.navigate('Gates' as never); // Replace 'Gates' with the actual name of your screen
+    navigation.navigate('Gates' as never);
   };
 
   const navigateToJourneyCost = () => {
-    navigation.navigate('JourneyCost' as never); // Replace 'JourneyCost' with the actual name of your screen
+    navigation.navigate('Journey calulator' as never);
   };
 
   const navigateToRoutes = () => {

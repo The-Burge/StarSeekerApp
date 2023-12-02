@@ -9,8 +9,17 @@ import {
   RefreshControl,
 } from 'react-native';
 
+interface Gate {
+  uuid: string;
+  code: string;
+  createdAt: string;
+  links: string;
+  name: string;
+  updatedAt: string;
+}
+
 const Gates = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Gate[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -20,7 +29,6 @@ const Gates = () => {
   const fetchData = useCallback(() => {
     const apiUrl = 'https://hstc-api.testing.keyholding.com/gates';
 
-    // Start loading
     setLoading(true);
 
     fetch(apiUrl, {
@@ -37,17 +45,14 @@ const Gates = () => {
         return response.json();
       })
       .then(responseJson => {
-        // Stop loading when data is received
         setLoading(false);
         setData(responseJson);
       })
       .catch(error => {
         console.error('Error:', error);
-        // Stop loading on error
         setLoading(false);
       })
       .finally(() => {
-        // Stop refreshing
         setRefreshing(false);
       });
   }, [apiKey]);
@@ -57,9 +62,6 @@ const Gates = () => {
   }, [fetchData]);
 
   const handleRefresh = () => {
-    // Start refreshing
-    setRefreshing(true);
-    // Fetch data again
     fetchData();
   };
 
