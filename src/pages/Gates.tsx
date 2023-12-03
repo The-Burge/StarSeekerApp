@@ -4,9 +4,10 @@ import {
   Text,
   FlatList,
   StyleSheet,
-  ActivityIndicator,
+  // ActivityIndicator,
   StatusBar,
   RefreshControl,
+  Image,
 } from 'react-native';
 
 interface Gate {
@@ -80,7 +81,12 @@ const Gates = () => {
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
         }
       />
-      {loading && <ActivityIndicator size="large" color="#3b5998" />}
+      {loading && (
+        <Image
+          source={require('./images/RocketLoading.gif')}
+          style={styles.loadingImage}
+        />
+      )}
     </View>
   );
 };
@@ -103,6 +109,11 @@ const styles = StyleSheet.create({
   },
   itemText: {
     color: 'white',
+  },
+  loadingImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 10,
   },
 });
 

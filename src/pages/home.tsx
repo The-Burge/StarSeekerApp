@@ -26,10 +26,7 @@ const BackgroundImage: React.FC<HomeScreenProps> = () => {
     <View style={styles.container}>
       <Starfield />
       <View style={styles.overlay}>
-        <Text style={styles.title}>
-          {' '}
-          Welcome to the best app in the world
-        </Text>
+        <Text style={styles.title}> Welcome to the best app in the world</Text>
 
         <TouchableOpacity
           onPress={navigateToGates}
