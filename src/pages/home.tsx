@@ -32,7 +32,7 @@ const BackgroundImage: React.FC<HomeScreenProps> = () => {
           onPress={navigateToGates}
           style={styles.buttonContainer}>
           <Image
-            source={require('./images/gates.png')}
+            source={require('../assets/images/gates.png')}
             style={styles.buttonImage}
           />
           <Text style={styles.buttonText}>View gate information</Text>
@@ -42,7 +42,7 @@ const BackgroundImage: React.FC<HomeScreenProps> = () => {
           onPress={navigateToJourneyCost}
           style={styles.buttonContainer}>
           <Image
-            source={require('./images/route.png')}
+            source={require('../assets/images/route.png')}
             style={styles.buttonImage}
           />
           <Text style={styles.buttonText}>Journey Calculator</Text>
@@ -52,7 +52,7 @@ const BackgroundImage: React.FC<HomeScreenProps> = () => {
           onPress={navigateToRoutes}
           style={styles.buttonContainer}>
           <Image
-            source={require('./images/space.png')}
+            source={require('../assets/images/space.png')}
             style={styles.buttonImage}
           />
           <Text style={styles.buttonText}>Cheapest route</Text>

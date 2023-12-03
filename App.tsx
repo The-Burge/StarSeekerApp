@@ -5,10 +5,30 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import Journey from './src/pages/journey';
 import HomeScreen from './src/pages/home';
 import Routes from './src/pages/routes';
+import LottieView from 'lottie-react-native';
 
 const Drawer = createDrawerNavigator();
 
 function App() {
+  const [isLoading, setIsLoading] = React.useState(true);
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <LottieView
+        source={require('./src/assets/RocketLoading.json')}
+        autoPlay
+        loop
+      />
+    );
+  }
+
   return (
     <NavigationContainer>
       <Drawer.Navigator>

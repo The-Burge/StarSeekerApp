@@ -81,12 +81,14 @@ const Gates = () => {
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
         }
       />
-      {loading && (
-        <Image
-          source={require('./images/RocketLoading.gif')}
-          style={styles.loadingImage}
-        />
-      )}
+      {loading 
+      // && (
+      //   // <Image
+      //   //   source={require('./images/RocketLoading.gif')}
+      //   //   style={styles.loadingImage}
+      //   // />
+      // )
+      }
     </View>
   );
 };
