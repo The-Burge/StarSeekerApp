@@ -1,8 +1,13 @@
-import * as React from 'react';
-import {Text, View, Button} from 'react-native';
+import React from 'react';
+import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import Starfield from '../assets/starfield';
 
-function HomeScreen() {
+interface HomeScreenProps {
+  // Define any props specific to HomeScreen if needed
+}
+
+const BackgroundImage: React.FC<HomeScreenProps> = () => {
   const navigation = useNavigation();
 
   const navigateToGates = () => {
@@ -14,17 +19,75 @@ function HomeScreen() {
   };
 
   const navigateToRoutes = () => {
-    navigation.navigate('Routes' as never); // Replace 'Routes' with the actual name of your screen
+    navigation.navigate('Routes' as never);
   };
 
   return (
-    <View>
-      <Text>Welcome to the best app in the world</Text>
-      <Button title="View gate information" onPress={navigateToGates} />
-      <Button title="Journey Calculator" onPress={navigateToJourneyCost} />
-      <Button title="Cheapest route" onPress={navigateToRoutes} />
+    <View style={styles.container}>
+      <Starfield />
+      <View style={styles.overlay}>
+        <Text>Welcome to the best app in the world</Text>
+
+        <TouchableOpacity
+          onPress={navigateToGates}
+          style={styles.buttonContainer}>
+          <Image
+            source={require('./images/gates.png')}
+            style={styles.buttonImage}
+          />
+          <Text style={styles.buttonText}>View gate information</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={navigateToJourneyCost}
+          style={styles.buttonContainer}>
+          <Image
+            source={require('./images/route.png')}
+            style={styles.buttonImage}
+          />
+          <Text style={styles.buttonText}>Journey Calculator</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={navigateToRoutes}
+          style={styles.buttonContainer}>
+          <Image
+            source={require('./images/space.png')}
+            style={styles.buttonImage}
+          />
+          <Text style={styles.buttonText}>Cheapest route</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
-}
+};
 
-export default HomeScreen;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+    borderColor: 'white',
+  },
+  buttonImage: {
+    width: 100,
+    height: 100,
+    marginBottom: 10,
+    borderRadius: 10,
+    borderColor: 'white',
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+});
+
+export default BackgroundImage;
